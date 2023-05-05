@@ -1,0 +1,5 @@
+USER: What do you have that is expensive?
+SYSTEM: Yes, there are many. Would you be interested in trying British cuisine? Or African?
+USER: British cuisine is fine. Can you suggest a restaurant?
+SYSTEM: Fitzbillies Restaurant meets all of your requirements. Would you like more info on them?
+USER: Book this for 6 people on Monday at 12:30. Reference number? Also, I need a train leaving from Cambridge going to London Liverpool Street, arriving by 12:00.

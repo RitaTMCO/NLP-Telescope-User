@@ -1,0 +1,5 @@
+positive
+negative
+unknown
+unknown
+positive

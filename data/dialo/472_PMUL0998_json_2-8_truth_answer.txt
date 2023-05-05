@@ -1,0 +1,4 @@
+Booking was successful.
+The table will be reserved for 15 minutes.
+Reference number is : U6I2PPBO .
+i will now look up your train information.

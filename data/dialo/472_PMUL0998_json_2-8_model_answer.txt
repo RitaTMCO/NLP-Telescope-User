@@ -1,0 +1,4 @@
+Booking was successful.
+The table will be reserved for 15 minutes.
+Reference number is : XYZZZZZZZ.
+What day would you like to travel?
