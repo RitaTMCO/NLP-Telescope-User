@@ -163,8 +163,8 @@ source NLP-ENV/bin/activate
 Make sure you have [poetry](https://python-poetry.org/docs/#installation) installed, then run the following comands:
 
 ```bash
-git clone https://github.com/RitaTMCO/NLP-Telescope
-cd NLP-Telescope
+git clone https://github.com/RitaTMCO/NLP-Telescope-User
+cd NLP-Telescope-User
 poetry install --without dev
 ```
 
