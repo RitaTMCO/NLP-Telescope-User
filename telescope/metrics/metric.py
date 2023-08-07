@@ -17,7 +17,7 @@ from typing import List, Tuple, Dict
 from itertools import combinations
 
 import numpy as np
-from telescope.metrics.result import BootstrapResult, MetricResult, PairwiseResult, MultipleResult
+from telescope.metrics.result import BootstrapResult, MetricResult, PairwiseResult, MultipleMetricResults
 from telescope.testset import PairwiseTestset, MultipleTestset
 
 
@@ -54,8 +54,8 @@ class Metric(metaclass=abc.ABCMeta):
         """ Function that scores the multiple candidate systems inside a testset. """
         ref = testset.ref
         src = testset.src
-        systems_metric_results = {name: self.score(src,output,ref) for name,output in testset.systems_output.items()}
-        return MultipleResult(systems_metric_results)
+        systems_metric_results = {sys_id: self.score(src,output,ref) for sys_id,output in testset.systems_output.items()}
+        return MultipleMetricResults(systems_metric_results)
 
     @classmethod
     def bootstrap_resampling(
@@ -144,7 +144,7 @@ class Metric(metaclass=abc.ABCMeta):
         system_x: str,
         system_y: str,
         language: str,
-        multiple_result: MultipleResult = None,
+        multiple_result: MultipleMetricResults = None,
     ):
 
         """
@@ -162,15 +162,24 @@ class Metric(metaclass=abc.ABCMeta):
         """
 
         def update_wins(x_score: int, y_score: int, wins: Tuple[int]):
-            if y_score > x_score:
-                wins[1] += 1
-            elif y_score < x_score:
-                wins[0] += 1
+            if multiple_result.metric != "TER":
+                if y_score > x_score:
+                    wins[1] += 1
+                elif y_score < x_score:
+                    wins[0] += 1
+                else:
+                    wins[2] += 1
             else:
-                wins[2] += 1
+                if y_score > x_score:
+                    wins[0] += 1
+                elif y_score < x_score:
+                    wins[1] += 1
+                else:
+                    wins[2] += 1
+
             return wins
 
-        def recompute_sys_scores(multiple_result: MultipleResult) -> (float, float):
+        def recompute_sys_scores(multiple_result: MultipleMetricResults) -> (float, float):
             if cls.segment_level and multiple_result is not None:
                 reduces_x_scr = [
                     multiple_result.systems_metric_results[system_x].seg_scores[i] 

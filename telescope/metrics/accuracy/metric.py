@@ -12,7 +12,10 @@ class Accuracy(Metric):
     segment_level = True
 
     def score(self, src: List[str], cand: List[str], ref: List[str]) -> MetricResult:
-        score = accuracy_score(ref, cand)
+        if ref == []:
+            score = 0
+        else:
+            score = accuracy_score(ref, cand)
         labels = self.labels
         number_of_labels = len(labels)
         label_scores = []
@@ -21,7 +24,10 @@ class Accuracy(Metric):
 
         for i in range(number_of_labels):
             tn,fp,fn,tp = list(list(matrix[i][0]) + list(matrix[i][1]))
-            label_scores.append((tp+tn)/(tn+fp+fn+tp))
-
+            sum = tn+fp+fn+tp
+            if sum == 0:
+                label_scores.append(sum)
+            else:
+                label_scores.append((tp+tn)/(sum))
 
         return MetricResult(score,label_scores, src, cand, ref, self.name)

@@ -31,7 +31,7 @@ class NERFilter(Filter):
         self.engine = stanza.Pipeline(lang=self.language, processors="tokenize,ner")
 
     def set_language(self, source_language: str, target_language:str) -> None:
-        if source_language in STANZA_NER_LANGS:
+        if (source_language in STANZA_NER_LANGS) and (len(self.testset.ref) == len(self.testset.src)):
             self.language = source_language
             self.segments = self.testset.src
         elif target_language in STANZA_NER_LANGS:

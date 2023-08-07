@@ -53,7 +53,7 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
             "-m",
             "chrF",
             "--seg_metric",
@@ -79,7 +79,7 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
             "-m",
             "chrF",
             "--seg_metric",
@@ -107,7 +107,7 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
             "-m",
             "chrF",
             "--seg_metric",
@@ -142,7 +142,7 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
             "-m",
             "chrF",
             "--seg_metric",
@@ -176,7 +176,7 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
             "-m",
             "chrF",
             "--seg_metric",
@@ -188,8 +188,8 @@ class TestCompareCli(unittest.TestCase):
         ]
         result = self.runner.invoke(n_compare_nlg, args, catch_exceptions=False)
         self.assertEqual(result.exit_code, 0)
-
-    def test_with_output_comet(self):
+    
+    def test_with_gender_bias_evaluation(self):
         args = [
             "-t",
             self.task,
@@ -206,7 +206,65 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
+            "-m",
+            "chrF",
+            "--seg_metric",
+            "GLEU",
+            "-b",
+            "Gender",
+            "--option_gender_bias_evaluation",
+            "with library"
+        ]
+        result = self.runner.invoke(n_compare_nlg, args, catch_exceptions=False)
+        self.assertEqual(result.exit_code, 0)
+
+    def test_with_ranking(self):
+        args = [
+            "-t",
+            self.task,
+            "-s",
+            self.src,
+            "-c",
+            self.system_a,
+            "-c",
+            self.system_b,
+            "-c",
+            self.system_g,
+            "-r",
+            self.ref_b,
+            "-r",
+            self.ref_c,
+            "-l",
+            "en",
+            "-m",
+            "chrF",
+            "--seg_metric",
+            "GLEU",
+            "-u",
+            "pairwise-comparison"
+        ]
+        result = self.runner.invoke(n_compare_nlg, args, catch_exceptions=False)
+        self.assertEqual(result.exit_code, 0)
+
+    def test_with_output_comet_gender_bias_evaluation_and_ranking(self):
+        args = [
+            "-t",
+            self.task,
+            "-s",
+            self.src,
+            "-c",
+            self.system_a,
+            "-c",
+            self.system_b,
+            "-c",
+            self.system_g,
+            "-r",
+            self.ref_b,
+            "-r",
+            self.ref_c,
+            "-l",
+            "en",
             "-m",
             "chrF",
             "--seg_metric",
@@ -228,6 +286,12 @@ class TestCompareCli(unittest.TestCase):
             0.3,
             "-n",
             self.sys_names_file,
+            "-b",
+            "Gender",
+            "--option_gender_bias_evaluation",
+            "with dataset",
+            "-u",
+            "social-choice-theory",
             "--output_folder",
             DATA_PATH
         ]
@@ -235,19 +299,67 @@ class TestCompareCli(unittest.TestCase):
         self.assertEqual(result.exit_code, 0)
 
         for ref in self.refs:
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/multiple-bucket-analysis.png")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/multiple-scores-distribution.html")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/Sys B-Sys C_multiple-segment-comparison.html")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/results.json")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/Sys B-Sys C_bootstrap_results.json")))
-
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") + "/Sys B-Sys C_multiple-segment-comparison.html")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/multiple-scores-distribution.html")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/multiple-bucket-analysis.png")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/results.json")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/Sys B-Sys C_bootstrap_results.json")
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/ranks_systems.csv")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/COMET-multiple-bucket-analysis.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/multiple-scores-distribution.html")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/Sys B-Sys C_multiple-segment-comparison.html")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/results.csv")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/analysis-metric-score.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/Sys B-Sys C_bootstrap_results.csv")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/bias_results/gender/with dataset/bias_evaluations_information.csv")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/bias_results/gender/with dataset/Accuracy-analysis-labels-bucket.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/bias_results/gender/with dataset/F1-score-analysis-labels-bucket.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/bias_results/gender/with dataset/number-of-correct-labels-of-each-system.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/bias_results/gender/with dataset/number-of-incorrect-labels-of-each-system.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/bias_results/gender/with dataset/bias_results.csv")))
+            for sys_name in ["Sys A", "Sys B", "Sys C"]:
+                dir = ref.replace("/","_")  + "/bias_results/gender/with dataset/" + sys_name
+                self.assertTrue(
+                    os.path.isfile(os.path.join(
+                        DATA_PATH, dir + "/confusion-matrix-" + sys_name.replace(" ","_") + ".png"))
+                    )
+                self.assertTrue(
+                    os.path.isfile(os.path.join(
+                        DATA_PATH, dir + "/rates.csv"))
+                    )
+                self.assertTrue(
+                    os.path.isfile(os.path.join(
+                        DATA_PATH, dir + "/bias-segments.csv"))
+                    )
+                for group in ["male", "female", "neutral"]:
+                    self.assertTrue(
+                        os.path.isfile(os.path.join(
+                            DATA_PATH, dir + "/singular_confusion_matrix/" + sys_name.replace(" ","_") + "-label-" + group + ".png"))
+                        )
+                    
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") + "/metrics_results/Sys B-Sys C_multiple-segment-comparison.html")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/multiple-scores-distribution.html")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/COMET-multiple-bucket-analysis.png")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/results.csv")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/analysis-metric-score.png")
+            os.remove(DATA_PATH + "/" +ref.replace("/","_")  + "/bias_results/gender/with dataset/bias_evaluations_information.csv")
+            os.remove(DATA_PATH + "/" +ref.replace("/","_")  + "/bias_results/gender/with dataset/Accuracy-analysis-labels-bucket.png")
+            os.remove(DATA_PATH + "/" +ref.replace("/","_")  + "/bias_results/gender/with dataset/F1-score-analysis-labels-bucket.png")
+            os.remove(DATA_PATH + "/" +ref.replace("/","_")  + "/bias_results/gender/with dataset/number-of-correct-labels-of-each-system.png")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_")  + "/bias_results/gender/with dataset/number-of-incorrect-labels-of-each-system.png")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_")  + "/bias_results/gender/with dataset/bias_results.csv")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/Sys B-Sys C_bootstrap_results.csv")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") + "/ranks_systems.csv")
+            for sys_name in ["Sys A", "Sys B", "Sys C"]:
+                dir = ref.replace("/","_")  + "/bias_results/gender/with dataset/" + sys_name
+                os.remove(DATA_PATH + "/" + dir + "/confusion-matrix-" + sys_name.replace(" ","_") + ".png")
+                os.remove(DATA_PATH + "/" + dir +  "/rates.csv")
+                os.remove(DATA_PATH + "/" + dir + "/bias-segments.csv")
+                for group in ["male", "female", "neutral"]:
+                    os.remove(DATA_PATH + "/" + dir + "/singular_confusion_matrix/" + sys_name.replace(" ","_")  + "-label-" + group + ".png")
+                os.rmdir(DATA_PATH + "/" + dir + "/singular_confusion_matrix/")
+                os.rmdir(DATA_PATH + "/" + dir + "/")
+            os.rmdir(DATA_PATH + "/" + ref.replace("/","_") + "/bias_results/gender/with dataset/")
+            os.rmdir(DATA_PATH + "/" + ref.replace("/","_") + "/bias_results/gender/")
+            os.rmdir(DATA_PATH + "/" + ref.replace("/","_") + "/bias_results/")
+            os.rmdir(DATA_PATH + "/" + ref.replace("/","_") + "/metrics_results/")
             os.rmdir(DATA_PATH + "/" + ref.replace("/","_"))
-
+            
     def test_with_output_bertscore(self):
         args = [
             "-t",
@@ -265,7 +377,7 @@ class TestCompareCli(unittest.TestCase):
             "-r",
             self.ref_c,
             "-l",
-            "cs",
+            "en",
             "-m",
             "chrF",
             "-f",
@@ -283,6 +395,8 @@ class TestCompareCli(unittest.TestCase):
             10,
             "--sample_ratio",
             0.3,
+            "-u",
+            "social-choice-theory",
             "--output_folder",
             DATA_PATH
         ]
@@ -290,15 +404,19 @@ class TestCompareCli(unittest.TestCase):
         self.assertEqual(result.exit_code, 0)
 
         for ref in self.refs:
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/multiple-bucket-analysis.png")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/multiple-scores-distribution.html")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/Sys 2-Sys 3_multiple-segment-comparison.html")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/results.json")))
-            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/Sys 2-Sys 3_bootstrap_results.json")))
-
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") + "/Sys 2-Sys 3_multiple-segment-comparison.html")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/multiple-scores-distribution.html")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/multiple-bucket-analysis.png")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/results.json")
-            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/Sys 2-Sys 3_bootstrap_results.json")
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/ranks_systems.csv")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/BERTScore-multiple-bucket-analysis.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/multiple-scores-distribution.html")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/Sys 2-Sys 3_multiple-segment-comparison.html")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/results.csv")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/metrics_results/analysis-metric-score.png")))
+            self.assertTrue(os.path.isfile(os.path.join(DATA_PATH, ref.replace("/","_")  + "/Sys 2-Sys 3_bootstrap_results.csv")))
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") + "/metrics_results/Sys 2-Sys 3_multiple-segment-comparison.html")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/multiple-scores-distribution.html")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/BERTScore-multiple-bucket-analysis.png")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/results.csv")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/metrics_results/analysis-metric-score.png")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") +  "/Sys 2-Sys 3_bootstrap_results.csv")
+            os.remove(DATA_PATH + "/" + ref.replace("/","_") + "/ranks_systems.csv")
+            os.rmdir(DATA_PATH + "/" + ref.replace("/","_") + "/metrics_results/")
             os.rmdir(DATA_PATH + "/" + ref.replace("/","_"))

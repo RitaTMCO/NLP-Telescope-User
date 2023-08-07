@@ -1,0 +1,20 @@
+All filters:
+      - duplicates
+      - length
+      - named-entities
+
+NLP filters: []
+
+NLG filters: 
+      - duplicates
+      - length
+      - named-entities
+      
+Machine Translation filters: []
+
+Summarization filters: []
+
+Dialogue System filters: []
+
+Classification filters:
+      - duplicates

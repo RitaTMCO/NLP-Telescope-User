@@ -14,7 +14,11 @@
 # limitations under the License.
 
 import os
+import yaml
 from io import StringIO
+
+PATH_USER = "user/" 
+PATH_DOWNLOADED_PLOTS = "user/downloaded_data/"
 
 
 def telescope_cache_folder():
@@ -33,3 +37,13 @@ def read_lines(file):
         lines = [line.strip() for line in file.readlines()]
         return lines
     return None
+
+def read_yaml_file(file_yaml):
+    file = open(PATH_USER + file_yaml, "r")
+    data = yaml.safe_load(file)
+    file.close()
+    return data
+
+def create_downloaded_data_folder():
+    if not os.path.exists(PATH_DOWNLOADED_PLOTS):
+        os.makedirs(PATH_DOWNLOADED_PLOTS)

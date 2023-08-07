@@ -26,16 +26,22 @@ class DuplicatesFilter(Filter):
         self.testset = testset
 
     def apply_filter(self) -> List[int]:
-        counter = Counter(self.testset.src)
-        sources = []
+        if len(self.testset.ref) == len(self.testset.src):
+            counter = Counter(self.testset.src)
+            file_item = 0
+        else:
+            counter = Counter(self.testset.ref)
+            file_item = 1
+
+        segments = []
 
         for i, item in enumerate(self.testset):
-            src = item[0]
-            if counter[src] == 0:
+            seg = item[file_item]
+            if counter[seg] == 0:
                 continue
             # if counter > 1 we set it to 0 to skip the next time it appears
-            if counter[src] > 1:
-                counter[src] = 0
+            if counter[seg] > 1:
+                counter[seg] = 0
 
-            sources.append(i)
-        return sources
+            segments.append(i)
+        return segments

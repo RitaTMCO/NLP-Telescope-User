@@ -1,0 +1,72 @@
+[   
+    {
+        "oe": "neutral",
+        "oa": "female",
+        "ão": "male"
+    },
+    {
+        "one": "neutral",
+        "ona": "female",
+        "ão": "male"
+    },
+    {
+        "ãe": "neutral",
+        "ã": "female",
+        "ão": "male"
+    },
+    {
+        "ore": "neutral",
+        "ora": "female",
+        "or": "male"
+    },
+    {
+        "eire": "neutral",
+        "eira": "female",
+        "or": "male"
+    },
+    {
+        "eire": "neutral",
+        "eira": "female",
+        "eiro": "male"
+    },
+    {
+        "tore": "neutral",
+        "triz": "female",
+        "tor": "male"
+    },
+    {
+        "ese": "neutral",
+        "esa": "female",
+        "ês": "male"
+    },
+    {
+        "eie": "neutral",
+        "eia": "female",
+        "eu": "male"
+    },
+    {
+        "que": "neutral",
+        "ca": "female",
+        "co": "male"
+    },
+    {
+        "gue": "neutral",
+        "ga": "female",
+        "go": "male"
+    },
+    { 
+        "ume":"neutral",
+        "uma":"female",
+        "um":"male"
+    },
+    { 
+        "umes":"neutral",
+        "umas":"female",
+        "uns":"male"
+    },
+    {
+        "rie":"neutral",
+        "ria":"female",
+        "rio":"male"
+    }
+]

@@ -1,0 +1,32 @@
+[   
+    { "gerente":"neutral"},
+    { "terapeuta":"neutral"},
+    { "recepcionista":"neutral"},
+    { "especialista":"neutral"},
+    { "eletricista":"neutral"},
+    { "patologista":"neutral"},
+    { "nutricionista":"neutral"},
+    { "higienista":"neutral"},
+    { "cientista":"neutral"},
+    { "dietista":"neutral"},
+    { "chefe":"neutral"},
+    {"assistente":"neutral"},
+    {"designer":"neutral"},
+    {"atendente":"neutral"},
+    {"analista":"neutral"},
+    {"xerife":"neutral"},
+    {"CEO":"neutral"},
+    { 
+        "estudante":"neutral",
+        "aluna":"female",
+        "aluno":"male"
+    },
+    {
+        "governante":"neutral",
+        "governanta":"female" 
+    },
+    {   
+        "juíza":"female",
+        "juiz":"male"
+    }
+]

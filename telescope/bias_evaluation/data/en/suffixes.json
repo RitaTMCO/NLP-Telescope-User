@@ -1,0 +1,89 @@
+[   
+    {   
+        "adult": "neutral",
+        "person": "neutral",
+        "woman": "female",
+        "man": "male"
+    },
+    {   
+        "adults": "neutral",
+        "people": "neutral",
+        "women": "female",
+        "men": "male"
+    },
+    {   
+        "person": "neutral",
+        "child": "neutral",
+        "girl": "female",
+        "boy": "male"
+    },
+    {   
+        "people": "neutral",
+        "children": "neutral",
+        "girls": "female",
+        "boys": "male"
+    },
+    {
+        "parents": "neutral",
+        "mothers": "female",
+        "moms": "female",
+        "mommies": "female",
+        "father": "male",
+        "fathers": "male",
+        "dads": "male"
+    },
+    {
+        "sibling": "neutral",
+        "sister": "female",
+        "brother": "male"
+    },
+    {
+        "siblings": "neutral",
+        "sisters": "female",
+        "brothers": "male"
+    },
+    {
+        "child": "neutral",
+        "daughter": "female",
+        "son": "male"
+    },
+    {
+        "children": "neutral",
+        "daughters": "female",
+        "sons": "male"
+    },
+    {
+        "partner": "neutral",
+        "wife": "female",
+        "husband": "male"
+    },
+    {
+        "partners": "neutral",
+        "wives": "female",
+        "husbands": "male"
+    },
+    {
+        "lady": "female",
+        "lord": "male"
+    },
+    {
+        "ladies": "female",
+        "lords": "male"
+    },
+    {
+        "ess":"female",
+        "or":"male"
+    },
+    {
+        "esses":"female",
+        "ors":"male"
+    },
+    {
+        "ress":"female",
+        "er":"male"
+    },
+    {
+        "resses":"female",
+        "ers":"male"
+    }
+]

@@ -12,6 +12,9 @@ class Precision(Metric):
     segment_level = False
 
     def score(self, src: List[str], cand: List[str], ref: List[str]) -> MetricResult:
-        score = precision_score(ref, cand, average='macro', zero_division=0)
+        if ref == []:
+            score = 0
+        else:
+            score = precision_score(ref, cand, average='macro', zero_division=0)
 
         return MetricResult(score, [], src, cand, ref, self.name)

@@ -1,0 +1,50 @@
+All metrics:
+      - COMET
+      - BLEU
+      - chrF
+      - ZeroEdit
+      - BERTScore
+      - TER
+      - GLEU
+      - ROUGE-1
+      - ROUGE-2
+      - ROUGE-L
+      - Accuracy
+      - Precision
+      - Recall
+      - F1-score
+
+NLP metrics: []
+
+NLG metrics: 
+      - BERTScore  
+      
+Machine Translation metrics:  
+      - COMET
+      - BLEU
+      - chrF
+      - ZeroEdit
+      - TER
+      - GLEU
+
+Summarization metrics:
+      - ROUGE-1
+      - ROUGE-2
+      - ROUGE-L
+
+Dialogue System metrics:
+      - BLEU
+      - ROUGE-1
+      - ROUGE-2
+      - ROUGE-L
+
+Classification metrics:
+      - Accuracy
+      - Precision
+      - Recall
+      - F1-score
+
+Evaluation Bias metrics:
+      - Demographic-Parity
+      - Accuracy
+      - F1-score

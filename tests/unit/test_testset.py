@@ -49,7 +49,7 @@ class TestTestset(unittest.TestCase):
         src_name = 'src.txt',
         refs_names = ['ref_1.txt','ref_2.txt'],
         refs_indexes = {'ref_1.txt':"Ref A", 'ref_2.txt':"Ref B"},
-        systems_indexes = {"google.txt":"Sys 1", "unbabel_1.txt":"Sys 2", "unbabel_2.txt":"Sys 3"},
+        systems_ids = {"google.txt":"Sys 1", "unbabel_1.txt":"Sys 2", "unbabel_2.txt":"Sys 3"},
         systems_names = {"Sys 1":"Sys A", "Sys 2":"Sys B", "Sys 3":"Sys C"},
         filenames = ["src.txt", "ref_1.txt", "ref_2.txt", "google.txt", "unbabel_1.txt", "unbabel_2.txt"],
         testsets = [multiple_testset_1, multiple_testset_2],

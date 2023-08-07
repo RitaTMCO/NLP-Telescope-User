@@ -114,10 +114,10 @@ class BootstrapResult:
         }
 
 
-class MultipleResult:
+class MultipleMetricResults:
     def __init__(
         self,
-        systems_metric_results: Dict[str, MetricResult],
+        systems_metric_results: Dict[str, MetricResult],  # {sys_id:  MetricResult}
     ) -> None:
 
         self.systems_metric_results = systems_metric_results
@@ -139,23 +139,23 @@ class MultipleResult:
         return self.systems_metric_results[system_name].cand
 
     @staticmethod
-    def results_to_dataframe(multiple_results: list, systems_names:Dict[str, str]) -> pd.DataFrame:
+    def results_to_dataframe(multiple_metrics_results: list, systems_names:Dict[str, str]) -> pd.DataFrame:
 
         summary = { 
-            sys_name: [m_res.systems_metric_results[sys_id].sys_score for m_res in multiple_results] 
+            sys_name: [m_res.systems_metric_results[sys_id].sys_score for m_res in multiple_metrics_results] 
             for sys_id, sys_name in systems_names.items()
         }
 
         df = pd.DataFrame.from_dict(summary)
-        df.index = [m_res.metric for m_res in multiple_results]
+        df.index = [m_res.metric for m_res in multiple_metrics_results]
         return df
 
     @staticmethod
-    def results_to_dict(multiple_results: list, systems_names:Dict[str, str]):
+    def results_to_dict(multiple_metrics_results: list, systems_names:Dict[str, str]):
         return {
             m_res.metric: {
                             sys_name: m_res.systems_metric_results[sys_id].sys_score 
                             for sys_id, sys_name in systems_names.items()
                         }
-            for m_res in multiple_results
+            for m_res in multiple_metrics_results
         }

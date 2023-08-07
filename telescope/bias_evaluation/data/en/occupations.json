@@ -1,0 +1,194 @@
+[   
+    { "technician": "neutral"},
+    { "engineer":"neutral"},
+    { "doctor":"neutral"},
+    { "supervisor": "neutral"},
+    { "educator":"neutral"},
+    { "clerk":"neutral"},
+    { "counselor":"neutral"},
+    { "inspector":"neutral"},
+    { "mechanic":"neutral"},
+    { "manager":"neutral"},
+    { "therapist":"neutral"},
+    { "administrator":"neutral"},
+    { "receptionist":"neutral"},
+    { "librarian":"neutral"},
+    { "advisor":"neutral"},
+    { "pharmacist":"neutral"},
+    { "janitor":"neutral"},
+    { "psychologist":"neutral"},
+    { "physician":"neutral"}, 
+    { "carpenter":"neutral"},
+    { "investigator":"neutral"},
+    { "bartender":"neutral"},
+    { "specialist":"neutral"},
+    { "electrician":"neutral"},
+    { "officer":"neutral"},
+    { "pathologist":"neutral"},
+    { "teacher":"neutral"},
+    { "lawyer":"neutral"},
+    { "planner":"neutral"},
+    { "practitioner":"neutral"},
+    { "plumber":"neutral"},
+    { "instructor":"neutral"},
+    { "surgeon":"neutral"},
+    { "veterinarian":"neutral"},
+    { "paramedic":"neutral"},
+    { "examiner":"neutral"},
+    { "chemist":"neutral"},
+    { "machinist":"neutral"},
+    { "appraiser":"neutral"},
+    { "nutritionist":"neutral"},
+    { "hairdresser":"neutral"},
+    { "baker":"neutral"},
+    { "programmer":"neutral"},
+    { "paralegal":"neutral"},
+    { "hygienist":"neutral"},
+    { "scientist":"neutral"},
+    { "dispatcher":"neutral"},
+    { "cashier":"neutral"},
+    { "auditor":"neutral"},
+    { "dietitian":"neutral"},
+    { "painter":"neutral"},
+    { "broker":"neutral"},
+    { "chief":"neutral"},
+    { "secretary":"neutral"},
+    {"laborer":"neutral"},
+    {"student":"neutral"},
+    {"constructor":"neutral"},
+    {"cook":"neutral"},
+    {"assistant":"neutral"},
+    {"cleaner":"neutral"},
+    {"developer":"neutral"},
+    {"designer":"neutral"},
+    {"farmer":"neutral"},
+    {"driver":"neutral"},
+    {"attendant":"neutral"},
+    {"writer":"neutral"},
+    {"guard":"neutral"},
+    {"analyst":"neutral"},
+    {"accountant":"neutral"},
+    {"mechanician":"neutral"},
+    {"editor":"neutral"},
+    {"sheriff":"neutral"},
+    {"librarian":"neutral"},
+    {"CEO":"neutral"},
+    {
+        "legislator": "neutral",
+        "congresswoman":"female",
+        "congressman":"male"
+    },
+    {
+        "legislators": "neutral",
+        "congresswomen":"female",
+        "congressmen":"male"
+    },
+    {
+        "firefighter": "neutral",
+        "fire fighter": "neutral",
+        "firewoman":"female",
+        "fireman":"male"
+    },
+    {
+        "firefighters": "neutral",
+        "fire fighters": "neutral",
+        "firewomen":"female",
+        "firemen":"male"
+    },
+    {
+        "performer": "neutral",
+        "actress": "female",
+        "actor": "male"
+    },
+    {
+        "performers": "neutral",
+        "actresses": "female",
+        "actors": "male"
+    },
+  
+    {
+        "police officer": "neutral",
+        "policewoman": "female",
+        "policeman": "male"
+    },
+    {   
+        "business representative": "neutral",
+        "businessperson": "neutral",
+        "businesswoman":"female",
+        "businessman": "male"
+    },
+    {   
+        "business representatives": "neutral",
+        "businessperson": "neutral",
+        "businesswoman":"female",
+        "businessman": "male"
+    },
+    {
+        "chair": "neutral",
+        "chairperson":"neutral",
+        "chairwoman":"female",
+        "chairman": "male"
+    },
+    {
+        "chairs": "neutral",
+        "chairpeople":"neutral",
+        "chairwomen":"female",
+        "chairmen": "male"
+    },
+    {
+        "flight attendant": "neutral",
+        "stewardess": "female",
+        "steward": "male"
+    },
+    {
+        "flight attendants": "neutral",
+        "stewardesses": "female",
+        "stewards": "male"
+    },
+    {
+        "abbess": "female",
+        "abbot": "male"
+    },
+    {
+        "abbesses": "female",
+        "abbots": "male"
+    },
+    {
+        "nun": "female",
+        "priestess": "female",
+        "priest": "male",
+        "monk": "male"
+    },
+    {
+        "nuns": "female",
+        "priestesses": "female",
+        "priests": "male",
+        "monks": "male"
+    },
+    {   
+        "housekeeper":"neutral",
+        "maidservant": "female",
+        "manservant": "male"
+    },
+    {   
+        "housekeepers" : "neutral",
+        "maidservants": "female",
+        "manservants": "male"
+    },
+    {
+        "masseuse": "female",
+        "masseur": "male"
+    },
+    {
+        "masseuses": "female",
+        "masseurs": "male"
+    },
+    {
+        "governess": "female",
+        "governor": "male"
+    },
+    {
+        "governesses": "female",
+        "governors": "male"
+    }
+]

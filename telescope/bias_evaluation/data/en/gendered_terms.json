@@ -1,0 +1,194 @@
+[
+    {
+        "aunt": "female",
+        "uncle": "male"
+    },
+    {
+        "aunts": "female",
+        "uncles": "male"
+    },
+    {
+        "niece": "female",
+        "nephew": "male"
+    },
+    {
+        "nieces": "female",
+        "nephews": "male"
+    },
+    {
+        "partner": "neutral",
+        "girlfriend": "female",
+        "boyfriend": "male"
+    }, 
+    {
+        "partners": "neutral",
+        "girlfriends": "female",
+        "boyfriends": "male"
+    }, 
+    {
+        "friend": "neutral",
+        "chick": "female",
+        "dude": "male"
+    },
+    {
+        "friends": "neutral",
+        "chicks": "female",
+        "dudes": "male"
+    },
+    {
+        "gal": "female",
+        "guy": "male"
+    },
+    {
+        "gals": "female",
+        "guys": "male"
+    },
+    {
+        "bride": "female",
+        "groom": "male"
+    },
+    {
+        "brides": "female",
+        "grooms": "male"
+    },
+    {
+        "girl": "female",
+        "guy": "male"
+    },
+    {
+        "girls": "female",
+        "guys": "male"
+    },
+    {
+        "nobles": "neutral",
+        "ladies": "female",
+        "gentlemen": "male"
+    },
+    {
+        "noble": "neutral",
+        "lady": "female",
+        "gentleman": "male"
+    },
+    {
+        "female": "female",
+        "male": "male"
+    },
+    {
+        "females": "female",
+        "males": "male"
+    },
+    {
+        "miss": "female",
+        "sir": "male"
+    },
+    {
+        "mx.": "neutral",
+        "mrs.": "female",
+        "mr.": "male"
+    },
+    {
+        "mx.": "neutral",
+        "ms.": "female",
+        "mr.": "male"
+    },
+    {
+        "ma'am": "female",
+        "sir": "male"
+    },
+    {
+        "spinster": "female",
+        "bachelor": "male"
+    },
+    {
+        "spinsters": "female",
+        "bachelors": "male"
+    },
+    {
+        "bride": "female",
+        "bridegroom": "male"
+    },
+    {
+        "brides": "female",
+        "bridegrooms": "male"
+    },
+    {
+        "duchess": "female",
+        "duke": "male"
+    },
+    {
+        "duchesses": "female",
+        "dukes": "male"
+    },
+    {
+        "fiancee": "female",
+        "fiance": "male"
+    },
+    {
+        "fiancees": "female",
+        "fiances": "male"
+    },
+    {
+        "heroine": "female",
+        "hero": "male"
+    },
+    {
+        "heroines": "female",
+        "heros": "male"
+    },
+    {
+        "lass": "female",
+        "lad": "male"
+    },
+    {
+        "lasses": "female",
+        "lads": "male"
+    },
+    {
+        "marchioness": "female",
+        "marquis": "male"
+    },
+    {
+        "widow": "female",
+        "widower": "male"
+    },
+    {
+        "widows": "female",
+        "widowers": "male"
+    },
+    {
+        "witch": "female",
+        "wizard": "male"
+    },
+    {
+        "witches": "female",
+        "wizards": "male"
+    },
+    {
+        "ruler": "neutral",
+        "queen": "female",
+        "king": "male"
+    },
+    {
+        "rulers": "neutral",
+        "queens": "female",
+        "kings": "male"
+    },
+    {
+        "": "neutral",
+        "godess": "female",
+        "god": "male"
+    },
+    {
+        "": "neutral",
+        "godesses": "female",
+        "gods": "male"
+    },
+    {
+        "hostess": "female",
+        "host": "male"
+    },
+    {
+        "hostesses": "female",
+        "hosts": "male"
+    }
+]

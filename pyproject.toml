@@ -1,13 +1,13 @@
 [tool.poetry]
 name = "nlp-telescope"
-version = "0.0.2"
-description = "A visual platform for contrastive evaluation of machine translation systems"
-authors = ["Ricardo Rei, Craig Stewart, Catarina Farinha, Alon Lavie"]
+version = "0.0.1"
+description = "A visual platform for contrastive evaluation of NLP systems"
+authors = ["Rita Oliveira"]
 license = "Apache-2.0"
 readme = "README.md"
-homepage = "https://github.com/Unbabel/MT-Telescope"
-repository = "https://github.com/Unbabel/MT-Telescope"
-documentation = "https://github.com/Unbabel/MT-Telescope/README.md"
+homepage = "https://github.com/RitaTMCO/NLP-Telescope-User"
+repository = "https://github.com/RitaTMCO/NLP-Telescope-User"
+documentation = "https://github.com/RitaTMCO/NLP-Telescope-User"
 keywords = [
     "Machine Translation", 
     "Evaluation",
@@ -41,6 +41,10 @@ scipy = ">=1.5.4"
 rouge = ">=1.0.1"
 scikit-learn = ">=1.2.2"
 evaluate = ">=0.4.0"
+nltk = ">3.8.0"
+spacy = "=3.2.5"
+fairlearn = ">=0.8.0" 
+optuna = ">=3.2.0"
 
 [tool.poetry.dev-dependencies]
 coverage = "^5.5"

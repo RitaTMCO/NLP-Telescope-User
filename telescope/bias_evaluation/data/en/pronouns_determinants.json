@@ -1,0 +1,27 @@
+[
+    { 
+        "they":"neutral", 
+        "she":"female", 
+        "he":"male"
+    },
+    { 
+        "them":"neutral", 
+        "her":"female", 
+        "him":"male"
+    },
+    { 
+        "theirs":"neutral", 
+        "hers":"female", 
+        "his":"male"
+    },
+    { 
+        "their":"neutral", 
+        "her":"female", 
+        "his":"male"
+    },
+    { 
+        "themself":"neutral", 
+        "herself":"female", 
+        "himself":"male"
+    }
+]

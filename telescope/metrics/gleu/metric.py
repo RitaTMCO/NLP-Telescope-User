@@ -148,9 +148,12 @@ class GLEU(Metric):
             sequence, n, pad_left, pad_right, left_pad_symbol, right_pad_symbol
         )
         history = []
-        while n > 1:
-            history.append(next(sequence))
-            n -= 1
+        try:
+            while n > 1:
+                history.append(next(sequence))
+                n -= 1
+        except StopIteration:
+            pass
         for item in sequence:
             history.append(item)
             yield tuple(history)
