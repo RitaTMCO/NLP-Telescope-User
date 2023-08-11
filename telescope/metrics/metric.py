@@ -198,6 +198,7 @@ class Metric(metaclass=abc.ABCMeta):
                     MultipleTestset(
                         reduced_src,
                         reduced_ref,
+                        testset.ref_id,
                         reducted_n_systems_output,
                         filenames=testset.filenames,
                     )

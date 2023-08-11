@@ -17,6 +17,7 @@ class TestMedian(unittest.TestCase):
     testset = MultipleTestset(
         src=["a", "b", "c"],
         ref=["a", "b", "c"],
+        ref_id="Ref 1",
         systems_output={
             "Sys 1": ["a", "d", "c"],
             "Sys 2": ["a", "k", "c"],

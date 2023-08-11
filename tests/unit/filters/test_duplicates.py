@@ -33,7 +33,7 @@ class TestDuplicatesFilter(unittest.TestCase):
     )
 
     multiple_testset = MultipleTestset(
-        src_2, ref_2, {"Sys 1":hyp, "Sys 2":alt}, ["src.de", "hyp.en", "alt.hyp.en", "ref.en"]
+        src_2, ref_2, "Ref 2", {"Sys 1":hyp, "Sys 2":alt}, ["src.de", "hyp.en", "alt.hyp.en", "ref.en"]
     )
     
 

@@ -86,11 +86,11 @@ class CollectionTestsets:
 
     @staticmethod
     def create_testsets(files:list) -> Dict[str, Testset]:
-        source_file, sources, _, references, _, _, systems_ids, _, outputs = files
+        source_file, sources, _, references, refs_ids, _, systems_ids, _, outputs = files
         testsets = {}
         for ref_filename, ref in references.items():
             filenames = [source_file.name] + [ref_filename] + list(systems_ids.keys())
-            testsets[ref_filename] = MultipleTestset(sources, ref, outputs, filenames)
+            testsets[ref_filename] = MultipleTestset(sources, ref, refs_ids[ref_filename], outputs, filenames)
         return testsets
     
     @classmethod

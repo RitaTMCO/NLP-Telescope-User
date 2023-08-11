@@ -81,7 +81,7 @@ class Classification(Task):
             index=0,
             key = "confusion_matrix"
         )
-        confusion_matrix_focused_on_one_label(testset.ref,testset.systems_output[system_name],label,labels,system_name)
+        confusion_matrix_focused_on_one_label(testset.ref,testset.systems_output[system],label,labels,system_name)
 
         _,middle,_ = st.columns(3)
         if middle.button('Download all confusion matrices of all systems'):
@@ -92,7 +92,7 @@ class Classification(Task):
                 sys = collection_testsets.system_name_id(sys_name)
                 confusion_matrix_of_system(testset.ref,testset.systems_output[sys],labels,sys_name,path_dir)
                 for l in labels:
-                    confusion_matrix_focused_on_one_label(testset.ref,testset.systems_output[sys_name],l,labels,sys_name, path_dir)
+                    confusion_matrix_focused_on_one_label(testset.ref,testset.systems_output[sys],l,labels,sys_name, path_dir)
 
 
         #-------------- |Analysis Of Each Label| --------------------

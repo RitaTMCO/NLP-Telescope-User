@@ -38,12 +38,26 @@ T4_COLOR = "#DB6646"
 ROTATION = 90
 
 def buckets_ratio(number_of_systems:int):
-
     ratio_font = int((number_of_systems)/4)
     ratio_r = int((number_of_systems)%4)
     ratio_bar = int((number_of_systems)/2)
     ratio = int((number_of_systems)/2) + ratio_r + ratio_font + ratio_bar
     return ratio_font, ratio_r, ratio_bar, ratio
+
+def calculate_color(num:int,number_of_labels:int, rgb=False):
+    if number_of_labels <= 10:
+        colors_cmap = plt.get_cmap('tab10') 
+    elif number_of_labels <= 20:
+        colors_cmap = plt.get_cmap('tab20b') 
+    else:
+        colors_cmap = plt.get_cmap('rainbow') 
+
+    colors = colors_cmap(num/number_of_labels)
+
+    if rgb:
+        return "rgb(" + str(int(255 * colors[0])) + "," + str(int(255 * colors[1])) + "," + str(int(255 * colors[2])) +")"
+
+    return colors
 
 
 def update_buckets(
@@ -588,11 +602,13 @@ def plot_multiple_distributions( multiple_result: MultipleMetricResults, sys_nam
         for metric_system in list(multiple_result.systems_metric_results.values())]
     scores = np.array(scores_list).T
     hist_data = [scores[:, i] for i in range(scores.shape[1])]
+    number_of_systems = len(multiple_result.systems_metric_results)
     try:
         fig = ff.create_distplot(
             hist_data,
             sys_names,
             bin_size=[0.1 for _ in range(scores.shape[1])],
+            colors = [calculate_color(i,number_of_systems,True) for i in range(number_of_systems)]
         ) 
 
         fig.update_layout(xaxis_title="Score", yaxis_title="Probability Density")
@@ -831,19 +847,10 @@ def analysis_bucket(scores_dict: Dict[str,List[float]], systems_names: List[str]
     font= 20 + ratio_font
     color = "black"
 
-    if number_of_labels <= 10:
-        colors_cmap = plt.get_cmap('tab10') 
-    elif number_of_labels <= 20:
-        colors_cmap = plt.get_cmap('tab20b') 
-    else:
-        colors_cmap = plt.get_cmap('rainbow') 
-
     plt.figure(figsize=(12+ratio,10+ratio))
     plt.clf()
 
-
-
-    axs = [plt.bar(r, scores_label[0], edgecolor="white", width=barWidth, color=colors_cmap(0))]
+    axs = [plt.bar(r, scores_label[0], edgecolor="white", width=barWidth, color=calculate_color(0,number_of_labels))]
 
     for i in range(1, number_of_labels):
         bottom = np.array([0.0 for _ in range(number_of_systems)])
@@ -856,7 +863,7 @@ def analysis_bucket(scores_dict: Dict[str,List[float]], systems_names: List[str]
                     scores.append(scores_per_system[j])
  
             bottom += np.array(scores)
-        axs.append(plt.bar(r, scores_label[i], bottom=bottom, edgecolor="white", width=barWidth,color=colors_cmap(i/number_of_labels)))
+        axs.append(plt.bar(r, scores_label[i], bottom=bottom, edgecolor="white", width=barWidth,color=calculate_color(i,number_of_labels)))
     
     for i in range(number_of_systems):
         for ax in axs:

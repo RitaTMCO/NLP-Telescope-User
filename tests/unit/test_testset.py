@@ -32,6 +32,7 @@ class TestTestset(unittest.TestCase):
     multiple_testset_1 = MultipleTestset(
         src=['Bonjour le monde.', "C'est un test."],
         ref=['Hello world.', 'This is a test.'],
+        ref_id= "Ref 1",
         systems_output={"Sys 1": ['Greetings world', 'This is an experiment.'], 
         "Sys 2":['Hi world.', 'This is a Test.'], "Sys 3":['Hello world.', 'This is a test']},
         filenames=["src.txt", "ref_1.txt", "google.txt", "unbabel_1.txt", "unbabel_2.txt"]
@@ -40,6 +41,7 @@ class TestTestset(unittest.TestCase):
     multiple_testset_2 = MultipleTestset(
         src=['Bonjour le monde.', "C'est un test."],
         ref=['Greetings world', 'This is an experiment.'],
+        ref_id= "Ref 2",
         systems_output={"Sys 1": ['Greetings world', 'This is an experiment.'], 
         "Sys 2":['Hi world.', 'This is a Test.'], "Sys 3":['Hello world.', 'This is a test']},
         filenames=["src.txt", "ref_2.txt", "google.txt", "unbabel_1.txt", "unbabel_2.txt"]
@@ -48,11 +50,11 @@ class TestTestset(unittest.TestCase):
     collection =  MTTestsets(
         src_name = 'src.txt',
         refs_names = ['ref_1.txt','ref_2.txt'],
-        refs_indexes = {'ref_1.txt':"Ref A", 'ref_2.txt':"Ref B"},
+        refs_indexes = {'ref_1.txt':"Ref 1", 'ref_2.txt':"Ref 2"},
         systems_ids = {"google.txt":"Sys 1", "unbabel_1.txt":"Sys 2", "unbabel_2.txt":"Sys 3"},
         systems_names = {"Sys 1":"Sys A", "Sys 2":"Sys B", "Sys 3":"Sys C"},
         filenames = ["src.txt", "ref_1.txt", "ref_2.txt", "google.txt", "unbabel_1.txt", "unbabel_2.txt"],
-        testsets = [multiple_testset_1, multiple_testset_2],
+        testsets = {"ref_1.txt": multiple_testset_1, "ref_2.txt":multiple_testset_2},
         language_pair="fr-en"
     )
 

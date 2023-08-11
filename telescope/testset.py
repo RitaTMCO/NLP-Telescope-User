@@ -21,32 +21,32 @@ class Testset:
     def __init__(
         self,
         src: List[str],
-        mt: List[str],
+        output: List[str],
         ref: List[str]
     ) -> None:
         self.src = src
         self.ref = ref
-        self.mt = mt
+        self.output = output
 
         assert len(ref) == len(
             src
         ), "mismatch between references and sources ({} > {})".format(
             len(ref), len(src)
         )
-        assert len(mt) == len(
+        assert len(output) == len(
             ref
-        ), "mismatch between MT and references ({} > {})".format(len(mt), len(ref))
+        ), "mismatch between system output and references ({} > {})".format(len(output), len(ref))
 
     def __len__(self) -> int:
         return len(self.ref)
 
     def __getitem__(self, i) -> Tuple[str]:
-        return self.src[i], self.ref[i], self.mt[i]
+        return self.src[i], self.ref[i], self.output[i]
 
     def apply_filter(self, filter):
         to_keep = filter.apply_filter()
         self.src = [self.src[idx] for idx in to_keep]
-        self.mt = [self.mt[idx] for idx in to_keep]
+        self.output = [self.output[idx] for idx in to_keep]
         self.ref = [self.ref[idx] for idx in to_keep]
 
 
@@ -152,11 +152,13 @@ class MultipleTestset(Testset):
         self,
         src: List[str], 
         ref: List[str], 
+        ref_id: str,
         systems_output: Dict[str, List[str]], # {sys_id: system output}
         filenames: List[str],
     ) -> None:
         self.src = src
         self.ref = ref
+        self.ref_id = ref_id
         self.systems_output = systems_output
         self.filenames = filenames
 
@@ -166,7 +168,7 @@ class MultipleTestset(Testset):
 
     @staticmethod
     def hash_func(testset):
-        return " ".join(testset.filenames) + " " + " ".join(testset.systems_output.keys())
+        return " ".join(testset.filenames) + " " + " ".join(testset.systems_output.keys()) + " " + testset.ref_id
 
     def apply_filter(self, filter):
         to_keep = filter.apply_filter()
